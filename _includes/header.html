@@ -1,0 +1,29 @@
+<!-- Header -->
+<header id="header"{% if page.layout == 'landing' %} class="alt"{% endif %}>
+  <h1><a href="{{ site.baseurl }}/index.html">{{ site.title }}</a></h1>
+  <nav id="main-nav">
+    <ul>
+      <li><a href="{{ "/index.html" | prepend: site.baseurl }}">Home</a></li>
+	  {%assign sorted_pages = site.pages | sort: 'key','last' %}
+	  {%for my_page in sorted_pages %}
+		{%if my_page.title %}{%
+			unless my_page.options contains 'nomenu' %}
+				<li><a href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.title }}</a></li>{%
+            endunless %}{%
+        endif %}
+	  {%endfor %}
+	  
+	  <li class="submenu">
+        <a href="#">Crafts</a>
+		<ul style="list-style: none;">
+		  <li><a href="{{ "/index.html" | prepend: site.baseurl }}">Programming</a></li>
+		  <li><a href="{{ "/index.html" | prepend: site.baseurl }}">Leather work</a></li>
+		  <li><a href="{{ "/index.html" | prepend: site.baseurl }}">Bikes</a></li>
+		</ul>
+	  </li>
+	  <li><a href="{{ "/feed.xml" | prepend: site.baseurl }}"
+                   class="icon fa-feed"></a></li>
+
+	  </ul>
+  </nav>
+</header>

@@ -1,29 +1,40 @@
 <!DOCTYPE html>
-	<html>
-		<head>
-			<title>{{ page.title }}</title>
-			<!-- link to main stylesheet -->
-			<link rel="stylesheet" type="text/css" href="/css/main.css">
-		</head>
-		<body>
-			<nav>
-	    		<ul>
-	        		<li><a href="/">Home</a></li>
-		        	<li><a href="/about">About</a></li>
-	        		<li><a href="/cv">CV</a></li>
-	        		<li><a href="/blog">Blog</a></li>
-	    		</ul>
-			</nav>
-			<div class="container">
-			
-			{{ content }}
-			
-			</div><!-- /.container -->
-			<footer>
-	    		<ul>
-	        		<li><a href="mailto:niko_pro@hotmail.com">email</a></li>
-	        		<li><a href="https://github.com/nilaymk">github.com/nilaymk</a></li>
-				</ul>
-			</footer>
-		</body>
-	</html>
+<!--
+  Original Design: Spectral by HTML5 UP
+    html5up.net
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+  Jekyll build mod and further hacks by @arkadianriver, MIT license
+  plus more futher hacks by @nilaymk, MIT license
+-->
+<html lang="{{ site.lang }}">
+
+  {% include head.html %}
+
+  <body>
+
+    <!-- Page Wrapper -->
+    <div id="page-wrapper">
+
+      {% include header.html %}
+
+      <article{%
+        if page.background-image %} id="main"{%
+        elsif page.options contains 'minihead' %} id="minihead"{%
+        else %} id="standard"{%
+        endif %}>
+
+        {% include header-inner.html %}
+
+        {{ content }}
+
+      </article>
+
+      {% include footer.html %}
+
+      {% include scripts.html %}
+
+    </div>
+
+  </body>
+
+</html>
