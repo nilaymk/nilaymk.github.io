@@ -10,6 +10,7 @@
 		.breakpoints({
 			xlarge:	'(max-width: 1680px)',
 			large:	'(max-width: 1280px)',
+			mediumPlus: '(min-width: 981px)',
 			medium:	'(max-width: 980px)',
 			small:	'(max-width: 736px)',
 			xsmall:	'(max-width: 480px)'
@@ -22,6 +23,7 @@
 			$wrapper = $('#page-wrapper'),
 			$banner = $('#banner'),
 			$header = $('#header');
+			$mynavlist = $('#main-nav > #mynavlist')
 
 		// Disable animations/transitions until the page has loaded.
 			$body.addClass('is-loading');
@@ -63,7 +65,7 @@
 				});
 
 		// Menu.
-			$('#main-nav > #mymenu')
+			/*$('#main-nav > #mynavlist')
 				.append('<a href="#" class="close"></a>')
 				.appendTo($body)
 				.panel({
@@ -75,7 +77,7 @@
 					side: 'right',
 					target: $body,
 					visibleClass: 'is-menu-visible'
-				});
+				});*/
 				
 			// dropdown: make sure you call dropotron on the top level <ul>
 			$('#main-nav > div > ul')
@@ -86,7 +88,10 @@
 					alignment: 'center'
 					//offsetY: -10 // Nudge up submenus by 10px to account for padding
 				});	
-				
+			
+			$('#menubutton, #closebutton')
+				.click(function(){$mynavlist.toggleClass('make-menu-visible');});
+			
 		// Header.
 			if (skel.vars.IEVersion < 9)
 				$header.removeClass('alt');

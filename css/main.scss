@@ -1685,11 +1685,24 @@ $baseurl: '{{ site.baseurl }}/images';
 					display: none;
 				}
 			}
-				
 			
 			> div {
-
 				@include breakpoint(medium) {
+					#closebutton {
+						background-image: url('images/close.svg');
+						background-position: 4.85em 1em;
+						background-repeat: no-repeat;
+						border: 0;
+						cursor: pointer;
+						display: block;
+						height: 3em;
+						position: absolute;
+						right: 2em;
+						top: 0;
+						vertical-align: middle;
+						width: 7em;
+					}
+					
 					@include vendor('transform', 'translateX(20em)');
 					@include vendor('transition', 'transform #{_duration(menu)} ease');
 					-webkit-overflow-scrolling: touch;
@@ -1704,6 +1717,10 @@ $baseurl: '{{ site.baseurl }}/images';
 					top: 0;
 					width: 20em;
 					z-index: _misc(z-index-base) + 2;
+
+					&.make-menu-visible {
+						@include vendor('transform', 'translateX(0em)');
+					}
 
 					> ul {
 						list-style: none;
@@ -1775,6 +1792,10 @@ $baseurl: '{{ site.baseurl }}/images';
 				}				
 
 				@include breakpoint(mediumPlus) {
+					#closebutton {
+						display: none;
+					}
+					
 					> ul {
 						list-style: none;
 						margin: 0;
