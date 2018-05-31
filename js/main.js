@@ -63,8 +63,8 @@
 				});
 
 		// Menu.
-			$('#menu')
-				.append('<a href="#menu" class="close"></a>')
+			$('#main-nav > #mymenu')
+				.append('<a href="#" class="close"></a>')
 				.appendTo($body)
 				.panel({
 					delay: 500,
@@ -78,15 +78,15 @@
 				});
 				
 			// dropdown: make sure you call dropotron on the top level <ul>
-			$('#main-nav > ul')
+			$('#main-nav > div > ul')
 				.dropotron({ 
 					mode: 'fade',
 					noOpenerFade: true,
 					expandMode: (skel.vars.isTouch ? 'click' : 'hover'),
 					alignment: 'center'
 					//offsetY: -10 // Nudge up submenus by 10px to account for padding
-				});				
-
+				});	
+				
 		// Header.
 			if (skel.vars.IEVersion < 9)
 				$header.removeClass('alt');
