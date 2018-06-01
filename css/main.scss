@@ -2170,7 +2170,6 @@ $baseurl: '{{ site.baseurl }}/images';
 		}
 	}
 	
-	
 	.submenu > a {
 		&:after {
 			content: "\f107";
@@ -2190,16 +2189,33 @@ $baseurl: '{{ site.baseurl }}/images';
 	.submenu-content {
 		list-style-type: none;
 		border: none;
-		position: absolute;
 		display: none;
+		
+		> li > a {
+			border: none;
+		}
+		
+		@include breakpoint(medium) {
+			display: block;
+		}
 	}
 	
 	.submenu-content a:hover {
-		background-color: #f1f1f1;
+		background: #83d3c9;
+		color: white;
 	}
 
 	.submenu:hover .submenu-content {
-		display: block;
+		@include breakpoint(mediumPlus) {
+			display: block;
+			position: absolute;
+			background: grey;
+			box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.075);
+			line-height: 2.25em;
+			min-width: 13em;
+			padding: 1em 0;
+			text-transform: uppercase;
+		}
 	}
 
 	.dropotron {
