@@ -80,14 +80,14 @@
 				});*/
 				
 			// dropdown: make sure you call dropotron on the top level <ul>
-			$('#main-nav > div > ul')
+			/*$('#main-nav > div > ul')
 				.dropotron({ 
 					mode: 'fade',
 					noOpenerFade: true,
 					expandMode: (skel.vars.isTouch ? 'click' : 'hover'),
 					alignment: 'center'
 					//offsetY: -10 // Nudge up submenus by 10px to account for padding
-				});	
+				});*/	
 			
 			$('#menubutton, #closebutton')
 				.click(function(){$mynavlist.toggleClass('make-menu-visible');});
