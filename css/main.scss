@@ -2169,55 +2169,111 @@ $baseurl: '{{ site.baseurl }}/images';
 			}
 		}
 	}
-	
-	.submenu > a {
-		&:after {
-			content: "\f107";
-			display: inline-block;
-			padding: 0.2em;
-			position: fixed;
-			border: 0;
-			font-family: FontAwesome;
-			font-weight: bold;
-			text-transform: none !important;
-			@include breakpoint(medium) {
-				display: none;
+
+.sub-menu-parent { position: relative; }
+
+.sub-menu { 
+  visibility: hidden; /* hides sub-menu */
+  opacity: 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  transform: translateY(-2em);
+  z-index: -1;
+  transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
+}
+
+.sub-menu-parent:focus .sub-menu,
+.sub-menu-parent:focus-within .sub-menu,
+.sub-menu-parent:hover .sub-menu {
+  visibility: visible; /* shows sub-menu */
+  opacity: 1;
+  z-index: 1;
+  transform: translateY(0%);
+  transition-delay: 0s, 0s, 0.3s; /* this removes the transition delay so the menu will be visible while the other styles transition */
+}
+
+	.submenu {
+		position: relative;
+		> a {
+			&:after {
+				content: "\f107";
+				display: inline-block;
+				padding: 0.2em;
+				position: fixed;
+				border: 0;
+				font-family: FontAwesome;
+				font-weight: bold;
+				text-transform: none !important;
+				/*@include breakpoint(medium) {
+					display: none;
+				}*/
 			}
 		}
-	}	
-	
-	.submenu-content {
-		list-style-type: none;
-		border: none;
-		display: none;
 		
-		> li > a {
+		> ul {
+			list-style-type: none;
+			border: none;
+			display: block;
+			/*text-transform: uppercase;*/
+
+			@include breakpoint(mediumPlus) {
+
+				background: grey;
+				box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.075);
+				line-height: 2.25em;
+				min-width: 13em;
+				padding: 1em 0;
+			}
+		}
+		
+		ul > li > a {
 			border: none;
 		}
 		
-		@include breakpoint(medium) {
-			display: block;
+	}	
+	
+	.submenu-content {
+		@include breakpoint(mediumPlus) {
+			visibility: hidden; /* hides sub-menu */
+			opacity: 0;
+			position: absolute;
+			top: 100%;
+			left: 0;
+			width: 100%;
+			transform: translateY(-2em);
+			z-index: -1;
+			transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
 		}
+		
+		@include breakpoint(medium) {
+			visibility: visible;
+		}
+	
 	}
 	
 	.submenu-content a:hover {
-		background: #83d3c9;
-		color: white;
-	}
-
-	.submenu:hover .submenu-content {
 		@include breakpoint(mediumPlus) {
-			display: block;
-			position: absolute;
-			background: grey;
-			box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.075);
-			line-height: 2.25em;
-			min-width: 13em;
-			padding: 1em 0;
-			text-transform: uppercase;
+			background: #83d3c9;
+			color: white;
 		}
 	}
 
+	
+	.submenu:focus .submenu-content,
+	.submenu:focus-within .submenu-content,
+	.submenu:hover .submenu-content {
+
+		@include breakpoint(mediumPlus) {
+			visibility: visible; /* shows sub-menu */
+			opacity: 1;
+			z-index: 1;
+			transform: translateY(0%);
+			transition-delay: 0s, 0s, 0.3s; /* this removes the transition delay so the menu will be visible while the other styles transition */
+		}
+	}	
+	
 	.dropotron {
 		background: grey;
 		box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.075);
