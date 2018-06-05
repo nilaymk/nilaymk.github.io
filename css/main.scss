@@ -2206,9 +2206,6 @@ $baseurl: '{{ site.baseurl }}/images';
 				font-family: FontAwesome;
 				font-weight: bold;
 				text-transform: none !important;
-				/*@include breakpoint(medium) {
-					display: none;
-				}*/
 			}
 		}
 		
@@ -2219,19 +2216,21 @@ $baseurl: '{{ site.baseurl }}/images';
 			/*text-transform: uppercase;*/
 
 			@include breakpoint(mediumPlus) {
-
 				background: grey;
-				box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.075);
 				line-height: 2.25em;
-				min-width: 13em;
-				padding: 1em 0;
+				padding: 0.5em 0.5em;
 			}
 		}
 		
-		ul > li > a {
-			border: none;
+		ul > li
+		{
+			padding-left: 0.25em;
+			padding-right: 0.25em;
+			> a {
+				border: none;
+				padding: 0.5em;
+			}
 		}
-		
 	}	
 	
 	.submenu-content {
@@ -2241,11 +2240,23 @@ $baseurl: '{{ site.baseurl }}/images';
 			position: absolute;
 			top: 100%;
 			left: 0;
-			width: 100%;
+			/*width: 100%;*/
 			transform: translateY(-2em);
 			z-index: -1;
 			transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
-		}
+			
+				&:before {
+					border-bottom: solid 0.5em grey;
+					border-left: solid 0.5em transparent;
+					border-right: solid 0.5em transparent;
+					content: '';
+					left: 45%;
+					position: absolute;
+					top: -0.45em;
+				}
+
+
+			}
 		
 		@include breakpoint(medium) {
 			visibility: visible;
@@ -2255,8 +2266,9 @@ $baseurl: '{{ site.baseurl }}/images';
 	
 	.submenu-content a:hover {
 		@include breakpoint(mediumPlus) {
-			background: #83d3c9;
 			color: white;
+			text-shadow: 0 0 5px #ffffff, 0 0 30px #000000;
+			/*font-weight: 525;*/
 		}
 	}
 
@@ -2264,9 +2276,8 @@ $baseurl: '{{ site.baseurl }}/images';
 	.submenu:focus .submenu-content,
 	.submenu:focus-within .submenu-content,
 	.submenu:hover .submenu-content {
-
 		@include breakpoint(mediumPlus) {
-			visibility: visible; /* shows sub-menu */
+			visibility: visible;
 			opacity: 1;
 			z-index: 1;
 			transform: translateY(0%);
@@ -2287,7 +2298,7 @@ $baseurl: '{{ site.baseurl }}/images';
 		.dropotron.level-0 {
 			font-size: 0.7em;
 			font-weight: 400;
-			/*margin-top: 1.5em;*/
+			margin-top: 1.5em;
 			
 		}
 
