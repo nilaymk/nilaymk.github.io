@@ -2264,7 +2264,9 @@ $baseurl: '{{ site.baseurl }}/images';
 	
 	}
 	
-	.submenu-content a:hover {
+	.submenu-content a:hover,
+	.submenu-content a:focus-within,
+	.submenu-content a.focus {
 		@include breakpoint(mediumPlus) {
 			color: white;
 			text-shadow: 0 0 5px #ffffff, 0 0 30px #000000;
@@ -2272,10 +2274,7 @@ $baseurl: '{{ site.baseurl }}/images';
 		}
 	}
 
-	
-	.submenu:focus .submenu-content,
-	.submenu:focus-within .submenu-content,
-	.submenu:hover .submenu-content {
+	%show-submenu-content {
 		@include breakpoint(mediumPlus) {
 			visibility: visible;
 			opacity: 1;
@@ -2283,8 +2282,17 @@ $baseurl: '{{ site.baseurl }}/images';
 			transform: translateY(0%);
 			transition-delay: 0s, 0s, 0.3s; /* this removes the transition delay so the menu will be visible while the other styles transition */
 		}
-	}	
+	}
 	
+	.submenu:focus > .submenu-content {
+		@extend %show-submenu-content;
+	}
+	
+	.submenu:focus-within > .submenu-content,
+	.submenu:hover > .submenu-content  {
+		@extend %show-submenu-content;
+	} 
+
 	.dropotron {
 		background: grey;
 		box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.075);
