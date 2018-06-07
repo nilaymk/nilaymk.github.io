@@ -2274,8 +2274,9 @@ $baseurl: '{{ site.baseurl }}/images';
 		}
 	}
 
-	%show-submenu-content {
+	@mixin show-submenu-content {
 		@include breakpoint(mediumPlus) {
+			background: blue;
 			visibility: visible;
 			opacity: 1;
 			z-index: 1;
@@ -2284,13 +2285,15 @@ $baseurl: '{{ site.baseurl }}/images';
 		}
 	}
 	
-	.submenu:focus > .submenu-content {
-		@extend %show-submenu-content;
+	/*SUCK: Edge/IE only works with hover and not focus so splitting it*/
+	.submenu:focus > .submenu-content,
+	.submenu:focus-within > .submenu-content{
+		@include show-submenu-content;
 	}
 	
-	.submenu:focus-within > .submenu-content,
+	/*SUCK: Edge/IE only works with hover and not focus so splitting it*/
 	.submenu:hover > .submenu-content  {
-		@extend %show-submenu-content;
+		@include show-submenu-content;
 	} 
 
 	.dropotron {
