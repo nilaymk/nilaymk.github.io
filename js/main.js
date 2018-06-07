@@ -90,7 +90,15 @@
 				});*/	
 			
 			$('#menubutton, #closebutton')
-				.click(function(){$mynavlist.toggleClass('make-menu-visible');});
+				.click(function(event){
+						$mynavlist.toggleClass('make-menu-visible');
+						event.preventDefault();
+					});
+					
+			$('#crafts')
+				.click(function(event){
+						event.preventDefault();
+					});
 			
 		// Header.
 			if (skel.vars.IEVersion < 9)
