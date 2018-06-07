@@ -1747,23 +1747,6 @@ $baseurl: '{{ site.baseurl }}/images';
 								}
 							}
 							
-							/*&.submenu > a {
-								&:after {
-									content: "\f107";
-									display: inline-block;
-									padding: 0.2em;
-									position: fixed;
-									border: 0;
-									font-family: FontAwesome;
-									font-weight: bold;
-									text-transform: none !important;
-									@include breakpoint(medium) {
-										display: none;
-									}
-								}
-							}*/
-
-
 							&:first-child {
 								margin-left: 0;
 							}
@@ -1820,29 +1803,6 @@ $baseurl: '{{ site.baseurl }}/images';
 									padding: 0 0 0 1.5em;
 								}
 							}
-							
-							/*&.submenu > a {
-								&:after {
-									content: "\f107";
-									display: inline-block;
-									padding: 0.2em;
-									position: fixed;
-									border: 0;
-									font-family: FontAwesome;
-									font-weight: bold;
-									text-transform: none !important;
-									@include breakpoint(medium) {
-										display: none;
-									}
-								}
-							}
-							
-							> ul {
-								&.submenu-content {
-									display: none;									
-								}
-							}*/
-							
 
 							&:first-child {
 								margin-left: 0;
@@ -2295,58 +2255,6 @@ $baseurl: '{{ site.baseurl }}/images';
 	.submenu:hover > .submenu-content  {
 		@include show-submenu-content;
 	} 
-
-	.dropotron {
-		background: grey;
-		box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.075);
-		line-height: 2.25em;
-		min-width: 13em;
-		padding: 1em 0;
-		text-transform: uppercase;
-		margin-top: calc(-1em + 1px);
-	}
-
-		.dropotron.level-0 {
-			font-size: 0.7em;
-			font-weight: 400;
-			margin-top: 1.5em;
-			
-		}
-
-			.dropotron.level-0:before {
-				border-bottom: solid 0.5em grey;
-				border-left: solid 0.5em transparent;
-				border-right: solid 0.5em transparent;
-				content: '';
-				left: 75%;
-				position: absolute;
-				top: -0.45em;
-			}
-
-		.dropotron > li {
-			border-top: solid 1px rgba(124, 128, 129, 0.2);
-		}
-
-			.dropotron > li > a {
-				-moz-transition: none;
-				-webkit-transition: none;
-				-o-transition: none;
-				-ms-transition: none;
-				transition: none;
-				color: inherit;
-				text-decoration: none;
-				padding: 0 1em;
-				border: 0;
-			}
-
-			.dropotron > li:hover > a {
-				background: #83d3c9;
-				color: white;
-			}
-
-			.dropotron > li:first-child {
-				border-top: 0;
-			}	
 
 /* Footer */
 

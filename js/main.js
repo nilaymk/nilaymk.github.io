@@ -63,31 +63,6 @@
 					speed: 1500,
 					offset: $header.outerHeight()
 				});
-
-		// Menu.
-			/*$('#main-nav > #mynavlist')
-				.append('<a href="#" class="close"></a>')
-				.appendTo($body)
-				.panel({
-					delay: 500,
-					hideOnClick: true,
-					hideOnSwipe: true,
-					resetScroll: true,
-					resetForms: true,
-					side: 'right',
-					target: $body,
-					visibleClass: 'is-menu-visible'
-				});*/
-				
-			// dropdown: make sure you call dropotron on the top level <ul>
-			/*$('#main-nav > div > ul')
-				.dropotron({ 
-					mode: 'fade',
-					noOpenerFade: true,
-					expandMode: (skel.vars.isTouch ? 'click' : 'hover'),
-					alignment: 'center'
-					//offsetY: -10 // Nudge up submenus by 10px to account for padding
-				});*/	
 			
 			$('#menubutton, #closebutton')
 				.click(function(event){
