@@ -597,6 +597,28 @@ $baseurl: '{{ site.baseurl }}/images';
 			display: none;
 		}
 
+		&.minor {
+			@include vendor('transform', 'rotate(-45deg)');
+			border-radius: 3px;
+			border: solid 2px _palette(border);
+			display: inline-block;
+			font-size: _font(hdr-size-large);
+			height: calc(2em + 2px);
+			line-height: 2em;
+			text-align: center;
+			width: calc(2em + 2px);
+
+			&:before {
+				@include vendor('transform', 'rotate(45deg)');
+				display: inline-block;
+				font-size: 1.5em;
+			}
+
+			@include breakpoint(small) {
+				font-size: _font(hdr-size-large);
+			}
+		}
+		
 		&.major {
 			@include vendor('transform', 'rotate(-45deg)');
 			border-radius: 3px;
@@ -1860,36 +1882,20 @@ $baseurl: '{{ site.baseurl }}/images';
 			@include vendor('transition-delay', '0');
 			@include vendor('transform', 'translateY(0)');
 			border: none;
-			bottom: 0;
+			bottom: 2%;
 			color: inherit;
 			font-size: 0.8em;
-			height: 8.5em;
 			left: 50%;
 			letter-spacing: _size(letter-spacing-alt);
-			margin-left: -8.5em;
 			opacity: 1;
 			outline: 0;
 			padding-left: _size(letter-spacing-alt);
 			position: absolute;
 			text-align: center;
 			text-transform: uppercase;
-			width: 16em;
 			z-index: 1;
 
-			&:after {
-				background-image: url('images/arrow.svg');
-				background-position: center;
-				background-repeat: no-repeat;
-				background-size: contain;
-				bottom: 4em;
-				content: '';
-				display: block;
-				height: 1.5em;
-				left: 50%;
-				margin: 0 0 0 -0.75em;
-				position: absolute;
-				width: 1.5em;
-			}
+
 		}
 
 		&:after {

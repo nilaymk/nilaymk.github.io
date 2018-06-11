@@ -26,11 +26,26 @@
                 <li><a href="#" class="button special">Activate</a></li>
               </ul>
               -->
+            </div>
+			<div class="inner">
+              <ul class="icons major">{%
+              for socloc in site.social limit:4 %}{%
+                if socloc[1] %}{%
+                  if socloc[0] == 'email' %}
+                <li><a target="_blank" href="{{ socloc[1] }}" class="icon fa-envelope minor style1"
+                       ><span class="label">E-mail</span></a></li>{%
+                  else %}
+                <li><a target="_blank" href="{{ socloc[1] }}" class="icon fa-{{ socloc[0] }} minor style1"
+                       ><span class="label">{{ socloc[0] }}</span></a></li>{%
+                  endif %}{%
+                endif %}{%
+              endfor %}
+              </ul>
             </div>{%
             if site.greeting %}
-            <a href="#greeting" class="more scrolly">Continue</a>{%
+            <a href="#greeting" class="more scrolly"><img src="{{ site.baseurl }}/css/images/arrow.svg"></img></a>{%
             else %}
-            <a href="#landing_pages" class="more scrolly">Continue</a>{%
+            <a href="#landing_pages" class="more scrolly"><img src="{{ site.baseurl }}/css/images/arrow.svg"></img></img></a>{%
             endif %}
           </section>
           {%
@@ -42,7 +57,7 @@
                 <h2>{% if site.greeting.title %}{{ site.greeting.title }}{% else %}{{ site.title }}{% endif %}</h2>
                 <p>{% if site.greeting.text %}{{ site.greeting.text | markdownify }}{% else %}{{ site.description | markdownify }}{% endif %}</p>
               </header>
-              <ul class="icons major">{%
+              <!--<ul class="icons major">{%
               for socloc in site.social limit:3 %}{%
                 if socloc[1] %}{%
                   if socloc[0] == 'email' %}
@@ -54,7 +69,7 @@
                   endif %}{%
                 endif %}{%
               endfor %}
-              </ul>
+              </ul>-->
             </div>
           </section>{%
           endif %}
