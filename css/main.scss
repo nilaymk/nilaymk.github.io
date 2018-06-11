@@ -753,7 +753,8 @@ $baseurl: '{{ site.baseurl }}/images';
 				padding: 1em 0;
 
 				li {
-					padding-right: 3.5em;
+					padding-right: 2em;
+					padding-left: 2em;
 
 					@include breakpoint(small) {
 						padding: 0 1em !important;
