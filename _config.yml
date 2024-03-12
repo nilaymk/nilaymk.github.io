@@ -96,7 +96,7 @@ works_in_progress: yes
 custom_extensions: no
 
 # Build settings
-permalink: /:categories/:title.html
+permalink: /:categories/:title:output_ext
 markdown: kramdown
 #sass:
 #  style: compressed
