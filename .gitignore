@@ -1,16 +1,10 @@
 # Jekyll ignores
-.jekyll-metadata
-.sass-cache/
 _site/
-_drafts/
-_data/tokens.yml
-_posts/1*
-_posts/2*
-unique/
-_site.env
-_my/
-_includes/_my
-_layouts/_my
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+.bundle/
+vendor/
 Gemfile.lock
 
 # Windows image file caches
