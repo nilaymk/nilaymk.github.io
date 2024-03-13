@@ -2,7 +2,7 @@
 title: Last topic in group
 excerpt: last topic
 categories:
-  - topics
+  - blog
   - my topic group
 date: 3006-09-22 00:02
 ---

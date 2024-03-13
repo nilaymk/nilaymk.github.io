@@ -1,9 +1,9 @@
 ---
 title: My Topic Group
 excerpt: first topic in my neat grouping
-permalink: /topics/my topic group/
+permalink: /blog/my topic group/
 categories:
-  - topics
+  - blog
   - my topic group
 date: 3006-09-22 00:00
 ---

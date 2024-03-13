@@ -28,7 +28,7 @@ greeting:
   title: Welcome! 
   text: I hope you enjoy my collection
 # - title for your blog's featured posts
-features-title: Featured topics
+features-title: Featured blog
 # - displayed at the bottom
 closing-head: Thanks for visiting
 closing-para: Feel free to get in touch. Cheers!

@@ -2,7 +2,7 @@
 layout: post
 title: "Here's my first post"
 date: 2018-05-16
-categories: topics
+categories: blog
 ---
 
 # My first post
