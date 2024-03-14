@@ -2,7 +2,7 @@
 priority: 0.6
 title: Project Z
 excerpt: An example of d and e
-categories: works
+categories: projects
 background-image: works-sample.png
 tags:
   - This

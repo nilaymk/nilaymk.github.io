@@ -88,8 +88,8 @@ compose:
 # top, bottom, both, none
 navlinks: bottom
 
-# expecting more works? mark your list as in-progress
-works_in_progress: yes
+# expecting more projects? mark your list as in-progress
+projects_in_progress: yes
 
 # If you have custom extensions, specifically includes/_my/custom.scss,
 # set this to yes

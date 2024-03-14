@@ -35,10 +35,10 @@ to accept the default you can just hit return.)
 
 This site has two types of posts:
 - blog: blog posts
-- Works: portfolio entries
+- projects: portfolio entries
 
 eoh
-print "Is this a (t)opic or (w)ork? [t]: "
+print "Is this a (t)opic or (p)roject? [t]: "
 type = ''
 while true
   type = gets
@@ -50,10 +50,10 @@ end
 
 categories = Array.new
 if type=='w'
-  categories << 'works'
+  categories << 'projects'
   puts <<-eoh
 
-Higher priority works are listed first and also get the same priority value
+Higher priority projects are listed first and also get the same priority value
 for the site map. 1.0 is the highest possible value, and you probably don't
 want it to have a priority under 0.5. What priority should it have?
   eoh

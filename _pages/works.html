@@ -1,7 +1,7 @@
 ---
 key: 1
-title: Works
-permalink: /works/
+title: projects
+permalink: /projects/
 excerpt: The portfolio&mdash;things I enjoyed creating
 image: pic02.jpg
 background-image: pic02.jpg
@@ -15,11 +15,11 @@ if site.social.linkedin-square %}
 </div>{%
 endif %}
 {%
-if site.categories.works %}
+if site.categories.projects %}
 <div class="table-wrapper">
   <table>
     <tbody>{%
-      include fn_groupsort_reverse.html unsorted=site.categories.works groupby='priority' sortby='date'
+      include fn_groupsort_reverse.html unsorted=site.categories.projects groupby='priority' sortby='date'
 %}{%  for work in sorted_list %}
       <tr>
         <td><b><a href="{{ work.url | prepend: site.baseurl }}">{{ work.title }}</a></b></td>
@@ -33,8 +33,8 @@ if site.categories.works %}
     </tbody>
   </table>
 </div>{%
-  if site.works_in_progress %}
-  <div class="works_inprogress">In-progress, more to come.</div>{%
+  if site.projects_in_progress %}
+  <div class="projects_inprogress">In-progress, more to come.</div>{%
   endif %}{%
 endif
 %}
