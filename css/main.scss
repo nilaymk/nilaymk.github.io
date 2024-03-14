@@ -2079,19 +2079,19 @@ $baseurl: '{{ site.baseurl }}/images';
 			}
 
 			@include breakpoint(xlarge) {
-				@include padding(8em, 0);
+				@include padding(3em, 0);
 			}
 
 			@include breakpoint(large) {
-				@include padding(8em, 3em);
+				@include padding(3em, 3em);
 			}
 
 			@include breakpoint(medium) {
-				@include padding(6em, 3em);
+				@include padding(2em, 3em);
 			}
 
 			@include breakpoint(small) {
-				@include padding(3em, 3em);
+				@include padding(1.5em, 3em);
 
 				h2 {
 					font-size: _font(hdr-size-mlarge);
