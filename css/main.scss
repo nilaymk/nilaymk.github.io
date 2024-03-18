@@ -106,7 +106,7 @@ $baseurl: '{{ site.baseurl }}/images';
 		letter-spacing: _size(letter-spacing-alt);
 		line-height: 1em;
 		margin: 0 0 (_size(element-margin) * 0.5) 0;
-		text-transform: uppercase;
+		/* text-transform: uppercase; */
 
 		code {
 			text-transform: none;
@@ -118,13 +118,21 @@ $baseurl: '{{ site.baseurl }}/images';
 		}
 	}
 
-	h2 {
-		font-size: _font(hdr-size-xlarge);
-		line-height: 1.75em;
+	h1 {
+		font-size: _font(hdr-size-xxlarge);
 
 		@include breakpoint(small) {
-			font-size: _font(hdr-size-large);
-			line-height: 1.65em;
+			font-size: _font(hdr-size-xxlarge);
+			line-height: _font(hdr-lheight-normal);
+		}
+	}
+
+	h2 {
+		font-size: _font(hdr-size-xlarge);
+
+		@include breakpoint(small) {
+			font-size: _font(hdr-size-xlarge);
+			line-height: _font(hdr-lheight-normal);
 		}
 	}
 
@@ -133,7 +141,7 @@ $baseurl: '{{ site.baseurl }}/images';
 		line-height: _font(hdr-lheight-large);
 
 		@include breakpoint(small) {
-			font-size: _font(hdr-size-small);
+			font-size: _font(hdr-size-normal);
 			line-height: _font(hdr-lheight-normal);
 		}
 	}
@@ -349,7 +357,7 @@ $baseurl: '{{ site.baseurl }}/images';
 		}
 
 		.excerpt-inline {
-			font-size: _font(hdr-size-xxsmall);
+			font-size: _font(hdr-size-xsmall);
 			font-weight: _font(weight);
 		}
 
@@ -1242,7 +1250,7 @@ $baseurl: '{{ site.baseurl }}/images';
 				color: _palette($p, fg-bold);
 			}
 
-			h2, h3, h4, h5, h6 {
+			h1, h2, h3, h4, h5, h6 {
 				color: _palette($p, fg-bold);
 			}
 
