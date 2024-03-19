@@ -340,6 +340,26 @@ $baseurl: '{{ site.baseurl }}/images';
 			}
 		}
 	}
+/* widths for responsive content */
+	@mixin responsive-content-widths {
+		width: 60em;
+		margin: 0 auto;
+
+		&.fullwidth {
+			width: 100%;
+			padding: 0 16px 0 16px;
+		}
+
+		@include breakpoint(large) {
+			width: 90%;
+			//width: 60em;
+		}
+
+		@include breakpoint(medium) {
+			width: 100%;
+		}
+	}
+
 
 /* Section/Article */
 
@@ -362,6 +382,7 @@ $baseurl: '{{ site.baseurl }}/images';
 			margin-left: auto;
 			margin-right: auto;
 			margin-bottom: 1em;
+			@include responsive-content-widths;
 		}
 
 		.post-date {
@@ -1488,23 +1509,7 @@ $baseurl: '{{ site.baseurl }}/images';
 		@include padding(3em, 0); //6
 
 		> .inner {
-			width: 60em;
-			margin: 0 auto;
-
-			&.fullwidth {
-				width: 100%;
-				padding: 0 16px 0 16px;
-			}
-
-			@include breakpoint(large) {
-				//width: 90%;
-				width: 60em;
-			}
-
-			@include breakpoint(medium) {
-				width: 100%;
-			}
-
+			@include responsive-content-widths;
 		}
 
 		&.alt {
