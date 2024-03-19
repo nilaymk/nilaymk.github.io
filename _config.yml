@@ -97,6 +97,7 @@ custom_extensions: no
 
 plugins:
   - github-pages
+  - jemoji
 
 
 # Build settings
