@@ -97,7 +97,7 @@ $baseurl: '{{ site.baseurl }}/images';
 	}
 
 	p {
-		margin: 0 0 _size(element-margin) 0;
+		margin: 0 0 (_size(element-margin) * 0.5) 0;
 	}
 
 	h1, h2, h3, h4, h5, h6 {
@@ -105,8 +105,8 @@ $baseurl: '{{ site.baseurl }}/images';
 		font-weight: _font(weight-extrabold);
 		letter-spacing: _size(letter-spacing-alt);
 		line-height: 1em;
-		margin: 0 0 (_size(element-margin) * 0.5) 0;
-		/* text-transform: uppercase; */
+		margin: (_size(element-margin) * 0.5) 0 (_size(element-margin) * 0.5) 0;
+		text-transform: capitalize;
 
 		code {
 			text-transform: none;
@@ -1689,6 +1689,7 @@ $baseurl: '{{ site.baseurl }}/images';
 			position: absolute;
 			top: 0;
 			text-transform: none;
+			margin-top: 0em;
 
 			a {
 				border: 0;
