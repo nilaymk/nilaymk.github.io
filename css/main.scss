@@ -2032,7 +2032,7 @@ $baseurl: '{{ site.baseurl }}/images';
 
 			h2 {
 				font-size: _font(hdr-size-xxlarge);
-				margin: 0 0 (_size(element-margin) * 0.25) 0;
+				margin: (_size(element-margin) * 0.25) 0 (_size(element-margin) * 0.25) 0;
 				text-transform: uppercase;
 			}
 
