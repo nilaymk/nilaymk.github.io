@@ -95,6 +95,10 @@ projects_in_progress: yes
 # set this to yes
 custom_extensions: no
 
+plugins:
+  - github-pages
+
+
 # Build settings
 permalink: /:categories/:title:output_ext
 markdown: kramdown
@@ -116,6 +120,13 @@ defaults:
       path: _drafts
     values:
       layout: post
+  - scope:
+      path: ""
+      type: "blog"
+    values:
+      layout: post
+      permalink: /:categories/:slug:output_ext
+
 
 # to initialize arrays in assignments (assign myarr = site.empty_array)
 # (easier to grok than assign myarr = '' | split',')
