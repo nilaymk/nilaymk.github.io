@@ -1,7 +1,7 @@
 ---
 title: "Pen On A Chain"
 slug: "pen on a chain"
-excerpt: What can a simple lifehack of teach us about Software Engineering
+excerpt: What can a simple lifehack teach us about Software Engineering
          and what makes good 'Tech Leads' and 'Architects'?
 ---
 
