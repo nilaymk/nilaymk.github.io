@@ -98,7 +98,7 @@ custom_extensions: no
 plugins:
   - github-pages
   - jemoji
-
+  - jekyll-seo-tag
 
 # Build settings
 permalink: /:categories/:title:output_ext
