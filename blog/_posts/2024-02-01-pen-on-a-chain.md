@@ -8,7 +8,7 @@ excerpt: What can a simple lifehack teach us about Software Engineering
 # A Simple Lifehack
 
 Ever found yourself looking for a pen to fill out a form at the Post Office, or to make
-a note on your fridge calendar? If you're like me you proabaly spent over 5 minutes looking
+a note on your fridge calendar? If you're like me you probably spent over 5 minutes looking
 for it, or entered into an argument about 'who moved the pen', and then forgot why you needed 
 that pen in the first place. While the pen is not expensive, the disruption caused when it
 is mislaid or lost can be quite expensive. 
@@ -21,7 +21,7 @@ is mislaid or lost can be quite expensive.
    </tr>
 </table>
 
-That's when the "pen on a chain" lifehack comes to the rescue. It's genious in its
+That's when the "pen on a chain" lifehack comes to the rescue. It's genius in its
 simplicity and effectiveness; no wonder it's so ubiquitous. The goal of this lifehack
 is not to prevent theft, but to prevent the 'easy to make' honest mistake of mislaying
 the pen.
@@ -30,16 +30,16 @@ So whats this got to do with Software Engineering and being a good Tech Lead and
 
 # Make "Easy mistakes" Hard To Make
 
-I have worked in teams with very smart people, and even so often enough these teams get
-slowed down by 'easy to make' but largly preventable mistakes. One of my responsibility
+I have worked in teams with very smart people and even so the teams get
+slowed down by 'easy to make' but largely preventable mistakes. One of my responsibility
 as a Tech Lead is to pre-empt such mistakes from happening; and when they do happen,
-employ simple but high-effective 'lifehacks' to pevent them from happening again and thus
+employ simple but highly-effective 'lifehacks' to prevent them from happening again and thus
 minimise disruptions and maximise flow. I.e. My responsibility as a tech lead is
 to put the 'pen on the chain'.
 
 Common mistakes like formatting inconsistency, untested branches, untyped parameters, memory leaks,
 missing returns, cyclic dependencies, etc. are easy to make. Luckily for us, they are also 
-easily detectable with tools like formatters, linters, type chechers, memory leak
+easily detectable with tools like formatters, linters, type checkers, memory leak
 checkers, bounds checkers, coverage checkers, etc. Thus they are easily preventable. Heck, some
 of these tools also fix our code for us! 
 
@@ -68,16 +68,16 @@ this developer behaviour and provide a good developer experience. Here's how:
    they copy + paste.
 
 1. **Keep updating the template with more pens on chains:** Found a new "easy mistake" or a better
-   tool? Great - go update the template. This way new code can benifit from it.
-   > What about consitency Nilay? What about it? Would you rather have consitently bad code
+   tool? Great - go update the template. This way new code can benefit from it.
+   > What about consistency Nilay? What about it? Would you rather have consistently bad code
    > and expand your tech debt or some "legacy code" that you will update with new rules
    > when needed?
 
 1. **Do away with that "Coding Standards" and "Best Practices Wiki page!:**
    Yes I'm serious. In my experience, these pages are viewed by developers once during their
-   induction and rarely ever after. If they do, it is only if 2 developers dont agree at a code
+   induction and rarely ever after. If they do, it is only if 2 developers don't agree at a code
    review and both of these developers could be agreeing on the wrong thing. If this is tooled
-   and templatized you generally dont need such wiki pages.
+   and templatized you generally don't need such wiki pages.
 
-*Going Beyond Code* and considering aspects like "Developer Experience" is what separtes good
+*Going Beyond Code* and considering aspects like "Developer Experience" is what separates good
 "Software/System Architects" from developers who "do architecture".
