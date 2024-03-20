@@ -10,10 +10,10 @@ excerpt: What can a simple lifehack of teach us about Software Engineering
 Ever found yourself looking for a pen to fill out a form at the Post Office, or to make
 a note on your fridge calendar? If you're like me you proabaly spent over 5 minutes looking
 for it, or entered into an argument about 'who moved the pen', and then forgot why you needed 
-that pen in the first place. While the pen not expensive, the disruption caused when it
+that pen in the first place. While the pen is not expensive, the disruption caused when it
 is mislaid or lost can be quite expensive. 
 
-<table class="width-scaled">   
+<table class="width-scaled" >   
    <tr>
      <td><img src="/blog/pen_1.jpg"/></td>
      <td><img src="/blog/pen_2.jpg"/></td>
@@ -75,7 +75,7 @@ this developer behaviour and provide a good developer experience. Here's how:
 
 1. **Do away with that "Coding Standards" and "Best Practices Wiki page!:**
    Yes I'm serious. In my experience, these pages are viewed by developers once during their
-   inductiod and rarely ever after. If they do, it is only if 2 developers dont agree at a code
+   induction and rarely ever after. If they do, it is only if 2 developers dont agree at a code
    review and both of these developers could be agreeing on the wrong thing. If this is tooled
    and templatized you generally dont need such wiki pages.
 
