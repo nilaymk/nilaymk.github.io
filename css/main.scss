@@ -992,27 +992,41 @@ $baseurl: '{{ site.baseurl }}/images';
 				border-top: 0;
 			}
 		}
+
+		&.width-scaled {
+			margin-left: auto;
+			margin-right: auto;
+			td {
+				img { /*images are contained and scaled */
+					max-width: 100%;
+					max-height: 100%;
+					object-fit: contain;
+				}
+			}
+		}
 	}
 
-	@include breakpoint(small) {
-	// from https://css-tricks.com/responsive-data-tables/
-		/* Force table to not be like tables anymore */
-		table, thead, tbody, th, td, tr {
-			display: block;
-		}
-		/* Hide table headers (but not display: none;, for accessibility) */
-		thead tr {
-			position: absolute;
-			top: -9999px;
-			left: -9999px;
-		}
-		//tr { border: 1px solid #ccc; }
-		td {
-			/* Behave  like a "row" */
-			border: none;
-			//border-bottom: 1px solid #eee;
-			position: relative;
-			padding-left: 50%;
+	:not(> .width-scaled) {
+		@include breakpoint(small) {
+		// from https://css-tricks.com/responsive-data-tables/
+			/* Force table to not be like tables anymore */
+			table, thead, tbody, th, td, tr {
+				display: block;
+			}
+			/* Hide table headers (but not display: none;, for accessibility) */
+			thead tr {
+				position: absolute;
+				top: -9999px;
+				left: -9999px;
+			}
+			//tr { border: 1px solid #ccc; }
+			td {
+				/* Behave  like a "row" */
+				border: none;
+				//border-bottom: 1px solid #eee;
+				position: relative;
+				padding-left: 50%;
+			}
 		}
 	}
 
