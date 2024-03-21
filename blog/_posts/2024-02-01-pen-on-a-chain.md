@@ -26,7 +26,7 @@ simplicity and effectiveness; no wonder it's so ubiquitous. The goal of this lif
 is not to prevent theft, but to prevent the 'easy to make' honest mistake of mislaying
 the pen.
 
-So whats this got to do with Software Engineering and being a good Tech Lead and Architect?
+So what's this got to do with Software Engineering and being a good Tech Lead and Architect?
 
 # Make "Easy mistakes" Hard To Make
 
