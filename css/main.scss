@@ -1813,8 +1813,9 @@ $baseurl: '{{ site.baseurl }}/images';
 							padding: 0 1.5em;
 							text-transform: uppercase;
 							
-							@include breakpoint(small) {
+							@include breakpoint(medium) {
 								padding: 0 0 0 1.5em;
+								font-size: _font(hdr-size-large)
 							}
 						}
 
