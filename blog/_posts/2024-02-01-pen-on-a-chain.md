@@ -31,7 +31,7 @@ So what's this got to do with Software Engineering and being a good Tech Lead an
 # Make "Easy mistakes" Hard To Make
 
 I have worked in teams with very smart people and even so the teams get
-slowed down by 'easy to make' but largely preventable mistakes. One of my responsibility
+slowed down by 'easy to make' but largely preventable mistakes. One of my responsibilities
 as a Tech Lead is to pre-empt such mistakes from happening; and when they do happen,
 employ simple but highly-effective 'lifehacks' to prevent them from happening again and thus
 minimise disruptions and maximise flow. I.e. My responsibility as a tech lead is
