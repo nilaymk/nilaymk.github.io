@@ -12,23 +12,24 @@
 
 # Site settings
 title: Nilay Kothari
-description: Software Crafter, Leather Crafter, Bicycle Mechanic, Yoga Practitioner, Salsa Dancer
+description: Software Crafter, Leather Crafter, Bicycle Mechanic, Yoga Practitioner,
+             Salsa Dancer, DJ, dad to 3 doggies.
 owner:
-  name: Nilay Kothari # or company name
+  name: Nilay Kothari
   email: nilyamk@gmail.com
   url: http://nilay.mk
 first_published: 2018 # if migrating another site, the year of your first publish
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://nilay.mk" # the base hostname & protocol for your site
+url: "https://nilay.mk" # the base hostname & protocol for your site
 lang: en-uk
 
 # on landing page
 # - set the greeting only if you want to display the first green section
-greeting:
-  title: Welcome! 
-  text: I hope you enjoy my collection
+# greeting:
+#  title: Welcome!
+#  text: I hope you enjoy my collection
 # - title for your blog's featured posts
-features-title: Featured blog
+features-title: Featured blogs
 # - displayed at the bottom
 closing-head: Thanks for visiting
 closing-para: Feel free to get in touch. Cheers!
