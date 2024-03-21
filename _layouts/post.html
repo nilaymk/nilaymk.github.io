@@ -28,8 +28,10 @@ layout: default
 %}{%      include fn_sortednav.html posclass='btntop'
 %}{%    endif
 %}{%  endif
-%}{%  if page.categories contains 'projects' and page.tags %}
+%}{%  if  page.tags
+%}{%    if page.categories contains 'projects' %}
       <h4>Skills</h4>
+  {% endif %}
   {%    assign work = page
 %}{%    include techlist.html %}
   {%  endif
