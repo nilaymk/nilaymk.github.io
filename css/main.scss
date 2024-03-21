@@ -119,6 +119,15 @@ $baseurl: '{{ site.baseurl }}/images';
 	}
 
 	h1 {
+		font-size: _font(hdr-size-xxxlarge);
+
+		@include breakpoint(small) {
+			font-size: _font(hdr-size-xxxlarge);
+			line-height: _font(hdr-lheight-normal);
+		}
+	}
+
+	h2 {
 		font-size: _font(hdr-size-xxlarge);
 
 		@include breakpoint(small) {
@@ -127,21 +136,12 @@ $baseurl: '{{ site.baseurl }}/images';
 		}
 	}
 
-	h2 {
-		font-size: _font(hdr-size-xlarge);
-
-		@include breakpoint(small) {
-			font-size: _font(hdr-size-xlarge);
-			line-height: _font(hdr-lheight-normal);
-		}
-	}
-
 	h3 {
-		font-size: _font(hdr-size-normal);
+		font-size: _font(hdr-size-large);
 		line-height: _font(hdr-lheight-large);
 
 		@include breakpoint(small) {
-			font-size: _font(hdr-size-normal);
+			font-size: _font(hdr-size-large);
 			line-height: _font(hdr-lheight-normal);
 		}
 	}
@@ -195,7 +195,7 @@ $baseurl: '{{ site.baseurl }}/images';
   	}
   	// might have to adjust sizes as well
   	h2 {
-  		font-size: _font(hdr-size-xlarge);
+  		font-size: _font(hdr-size-xxlarge);
   	}
   	*/
     p, dt, dd, p span, th, td, li, blockquote, #post-date {
@@ -319,7 +319,7 @@ $baseurl: '{{ site.baseurl }}/images';
 				padding: 0;
 				margin: 0;
 				font-weight: _font(weight-extrabold);
-				font-size: _font(hdr-size-large);
+				font-size: _font(hdr-size-medium);
 				line-height: _font(hdr-lheight-small);
 			}
 			.post-desc{
@@ -399,7 +399,7 @@ $baseurl: '{{ site.baseurl }}/images';
 		}
 
 		h3 + p {
-			font-size: _font(hdr-size-large);
+			font-size: _font(hdr-size-medium);
 		}
 
 		h4 + p,
@@ -644,7 +644,7 @@ $baseurl: '{{ site.baseurl }}/images';
 			border-radius: 3px;
 			border: solid 2px _palette(border);
 			display: inline-block;
-			font-size: _font(hdr-size-large);
+			font-size: _font(hdr-size-medium);
 			height: calc(2em + 2px);
 			line-height: 2em;
 			text-align: center;
@@ -657,7 +657,7 @@ $baseurl: '{{ site.baseurl }}/images';
 			}
 
 			@include breakpoint(small) {
-				font-size: _font(hdr-size-large);
+				font-size: _font(hdr-size-medium);
 			}
 		}
 		
@@ -666,7 +666,7 @@ $baseurl: '{{ site.baseurl }}/images';
 			border-radius: 3px;
 			border: solid 2px _palette(border);
 			display: inline-block;
-			font-size: _font(hdr-size-xlarge);
+			font-size: _font(hdr-size-xxlarge);
 			height: calc(3em + 2px);
 			line-height: 3em;
 			text-align: center;
@@ -679,7 +679,7 @@ $baseurl: '{{ site.baseurl }}/images';
 			}
 
 			@include breakpoint(small) {
-				font-size: _font(hdr-size-large);
+				font-size: _font(hdr-size-medium);
 			}
 		}
 
@@ -1815,7 +1815,7 @@ $baseurl: '{{ site.baseurl }}/images';
 							
 							@include breakpoint(medium) {
 								padding: 0 0 0 1.5em;
-								font-size: _font(hdr-size-large)
+								font-size: _font(hdr-size-medium)
 							}
 						}
 
@@ -2079,7 +2079,7 @@ $baseurl: '{{ site.baseurl }}/images';
 			text-align: center;
 
 			h2 {
-				font-size: _font(hdr-size-xxlarge);
+				font-size: _font(hdr-size-xxxlarge);
 				margin: (_size(element-margin) * 0.25) 0 (_size(element-margin) * 0.25) 0;
 				text-transform: uppercase;
 			}
@@ -2103,7 +2103,7 @@ $baseurl: '{{ site.baseurl }}/images';
 			text-align: left;
 
 			h2 {
-				font-size: _font(hdr-size-xxlarge);
+				font-size: _font(hdr-size-xxxlarge);
 				margin: 0;
 				color: _palette(accent7, fg);
 			}
@@ -2132,7 +2132,7 @@ $baseurl: '{{ site.baseurl }}/images';
 			text-align: center;
 
 			h2 {
-				font-size: _font(hdr-size-xxlarge);
+				font-size: _font(hdr-size-xxxlarge);
 				margin: 0 0 (_size(element-margin) * 0.25) 0;
 			}
 
@@ -2163,7 +2163,7 @@ $baseurl: '{{ site.baseurl }}/images';
 				@include padding(1.5em, 3em);
 
 				h2 {
-					font-size: _font(hdr-size-mlarge);
+					font-size: _font(hdr-size-xlarge);
 					margin: 0 0 (_size(element-margin) * 0.5) 0;
 				}
 			}
