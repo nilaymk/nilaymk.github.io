@@ -342,7 +342,7 @@ $baseurl: '{{ site.baseurl }}/images';
 	}
 /* widths for responsive content */
 	@mixin responsive-content-widths {
-		width: 60em;
+		width: 65%;
 		margin: 0 auto;
 
 		&.fullwidth {
@@ -383,16 +383,16 @@ $baseurl: '{{ site.baseurl }}/images';
 			margin-right: auto;
 			margin-bottom: 1em;
 			@include responsive-content-widths;
+			@include breakpoint(medium) {
+				text-transform: None !important; 
+			}
 		}
 
 		.post-date {
-			font-size: _font(hdr-size-small);
-			font-weight: _font(weight);
-			margin-left: auto;
-			margin-right: auto;
-			margin-bottom: 1em;
+			font-size: _font(hdr-size-xsmall);
 			text-align: right;
 			font-style: italic;
+			@include responsive-content-widths;
 		}
 
 		h2 + p {
