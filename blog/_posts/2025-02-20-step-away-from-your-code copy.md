@@ -71,6 +71,7 @@ and being open to new possibilities and outcomes in order to provide the appropr
 When my team jumps to solve a user/business need, I usually do the US cop thing in my head: "Sir/Madam
 drop your keyboard to the ground, put your hands where I can see them, and gently move away from your
 code" :-). Then I start with questions:
+
 - Can we solve this requirement/need without writing code?
 - Not possible? Ok what's the minimal code we can get away with?
 - What (tech) debt will this code bring?
