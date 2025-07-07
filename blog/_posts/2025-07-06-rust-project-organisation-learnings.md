@@ -11,23 +11,54 @@ tags:
 If like me, you're learning Rust and come from a C++ or Python background
 you might have seen code and unit tests organized in broadly 2 different styles.
 
-```console
-~~ Unit tests mirror src ~~        |  ~~ Unit tests inside src ~~
-project                            |  project
-+-- src                            |  +-- src
-|   +-- lib1                       |  |   +-- lib1
-|   +-- lib2                       |  |   |   +-- unit_tests
-|   +-- bin1                       |  |   +-- lib2
-|   +-- bin2                       |  |   |   +-- unit_tests
-+-- unit_tests                     |  |   +-- bin1
-|   +-- tests_for_lib1             |  |   |   +-- unit_tests
-|   +-- tests_for_lib2             |  |   +-- bin2
-|   +-- tests_for_bin1             |  |       +-- unit_tests
-|   +-- tests_for_bin2             |  +-- integration_tests
-+-- integration_tests              |      +-- test_integration_1
-    +-- test_integration_1         |      +-- test_integration_2
-    +-- test_integration_2         |
-```
+<table>
+<tr>
+<th> Unit tests mirror src </th>
+<th> Unit tests inside src </th>
+</tr>
+<tr>
+<td>
+
+{% highlight console %}
+project
++-- src
+|   +-- lib1
+|   +-- lib2
+|   +-- bin1
+|   +-- bin2
++-- unit_tests 
+|   +-- tests_for_lib1
+|   +-- tests_for_lib2
+|   +-- tests_for_bin1
+|   +-- tests_for_bin2
++-- integration_tests 
++-- test_integration_1
++-- test_integration_2
+{% endhighlight %}
+
+</td>
+<td>
+
+{% highlight console %}
+project
++-- src
+|   +-- lib1
+|   |   +-- unit_tests
+|   +-- lib2
+|   |   +-- unit_tests
+|   +-- bin1
+|   |   +-- unit_tests
+|   +-- bin2
+|       +-- unit_tests
++-- integration_tests
+    +-- test_integration_1
+    +-- test_integration_2
+.
+{% endhighlight %}
+
+</td>
+</tr>
+</table>
 
 This is either based on personal taste or governed by your organisation's coding 
 standard.
@@ -180,11 +211,11 @@ project
 |   |   |   +-- unittests
 |   |   |       +-- mod.rs
 |   |   |       +-- common_test_code.rs
-|   |   |       +-- test_*.rs   <== Test public interface of the library here
+|   |   |       +-- test_*.rs   <== Test pub(crate) interface/implementation of the library here
 |   |   +-- benches
 |   |   |   +- *.rs    <== benchmark tests
-|   |   +-- tests      <== I don't use integration tests simply because each 
-|   |                      file results and a binary and messes up the output.   
+|   |   +-- tests      <== 
+|   |                         
 |   +-- lib_2
 |   |   +-- ... snip ...
 |   | ... snip ...
