@@ -1818,7 +1818,7 @@ $baseurl: '{{ site.baseurl }}/images';
 							border: 0;
 							color: _palette(fg-bold);
 							display: block;
-							font-size: _font(hdr-size-xsmall);
+							font-size: _font(hdr-size-medium);
 							font-weight: normal;
 							letter-spacing: _size(letter-spacing-alt);
 							padding: 0 1.5em;
@@ -1826,7 +1826,7 @@ $baseurl: '{{ site.baseurl }}/images';
 							
 							@include breakpoint(medium) {
 								padding: 0 0 0 1.5em;
-								font-size: _font(hdr-size-xlarge)
+								font-size: _font(hdr-size-large)
 							}
 						}
 
