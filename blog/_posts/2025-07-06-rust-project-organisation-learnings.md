@@ -11,13 +11,12 @@ tags:
 If like me, you're learning Rust and come from a C++ or Python background
 you might have seen code and unit tests organized in broadly 2 different styles.
 
-<table>
-<tr>
-<th> Unit tests mirror src </th>
-<th> Unit tests inside src </th>
-</tr>
-<tr>
-<td>
+
+<div class="Rtable Rtable--2cols">
+  <div style="order:0;" class="Rtable-cell">
+    <h4>Unit tests mirror `src`</h4>
+  </div>
+  <div style="order:1;" class="Rtable-cell">
 
 {% highlight console %}
 project
@@ -36,8 +35,11 @@ project
     +-- test_integration_2
 {% endhighlight %}
 
-</td>
-<td>
+  </div>
+  <div style="order:0;" class="Rtable-cell">
+    <h4>Unit tests inside <code class="language-plaintext highlighter-rouge">src</code></h4>
+  </div>
+  <div style="order:1;" class="Rtable-cell">
 
 {% highlight console %}
 project
@@ -56,9 +58,8 @@ project
 .
 {% endhighlight %}
 
-</td>
-</tr>
-</table>
+  </div>
+</div>
 
 This is either based on personal taste or governed by your organisation's coding standard.
 
@@ -208,72 +209,228 @@ Ultimately the library organisation (mono-crate v.s. multicrate), the level inte
 and details being tested, and what common code needs to be shared between tests will
 govern where and how test are organised and in which folder they are placed.
 
-With all of the above in mind and after a few trials and frustrating errors here's 2 approaches
-I can recommend:
+With all of the above in mind and after a few trials and frustrating errors here's a low-down
+on the 2 broad approaches, how they look and some implications. 
 
 Let's use an hypothetical image processing/object detection lib/app as an example, which takes 
 an image and detects and localizes various pet animals... lets call it `Petective`
 
-## Single/Monolithic Library Crate
-
-The idea here is simply to break down the library into `modules / submodules`, and add unit tests
-in each  `module`.
-
-```console
+<div class="Rtable Rtable--2cols Rtable--collapse">
+  <div style="order:0;" class="Rtable-cell">
+    <h3>Single/Monolithic Library Crate</h3>
+  </div>
+  <div style="order:1;" class="Rtable-cell">
+    <ul>
+      <li> The entire library exists in a single crate. Code/functionality may be broken down,
+        grouped and organised in modules and sub-modules. </li>
+      <li> Dependencies, privacy and accessibility are handled internally using
+        <code>pub(desired-level)</code>.</li>
+      <li> Unit tests are placed in each module (here in <code>unit_tests</code> folder) and 
+        shared test code is just another module. </li>
+    </ul>
+  </div>
+  <div style="order:2;" class="Rtable-cell">
+{% highlight console %}
 petective_project   <-- Project Root
-|-- Cargo.toml      <-- Workspace toml file (workspace optional but recommend!!)
-|-- Cargo.lock 
+|-- Cargo.toml      <--+ Workspace toml file
+|-- Cargo.lock
 +-- petective       <-- Our monolith library + apps
-|   |-- Cargo.toml
-|   |-- Cargo.lock
+    |-- Cargo.toml
+    |-- Cargo.lock
+    +-- src
+    |   |-- lib.rs  <-- petective library interface
+    |   |-- *.rs
+    |   | 
+    |   +-- shared_test_code  <--+ shared test code
+    |   |   |-- mod.rs           | (e.g. fixtures)
+    |   |   |-- *.rs
+    |   |
+    |   +-- image_core    <--+ a module grouping 
+    |   |   |-- mod.rs       | some functionality 
+    |   |   |-- *.rs
+    |   |   +-- unit_tests   <--+ unit tests for the
+    |   |       |-- mod.rs      | module
+    |   |       |-- test_*.rs
+    |   |
+    |   +-- filters    <-- another module
+    |   |   |-- mod.rs
+    |   |   |-- *.rs
+    |   |   +-- unit_tests   <-- and its unit tests
+    |   |       |-- mod.rs
+    |   |       |-- test_*.rs
+    |   |
+    |   +-- unit_tests <--+ Library level unit tests
+    |       |-- mod.rs    | for the public interface
+    |       |-- test_*.rs
+    |
+    ... 
+{% endhighlight %}
+  </div>
+  <div style="order:3;" class="Rtable-cell">
+    <ul>
+      <li>Benchmarks, integration tests and examples may be placed and organised in
+        <code>benches</code>, <code>tests</code> and <code>examples</code> folders
+        respectively.</li>
+    </ul>
+  </div>
+  <div style="order:4;" class="Rtable-cell">
+{% highlight console %}
+petective_project   <-- Project Root
+|-- Cargo.toml      <--+ Workspace toml file
+|-- Cargo.lock
++-- petective       <-- Our monolith library + apps
+    |-- Cargo.toml
+    |-- Cargo.lock
+    +-- src
+    |   |-- *.rs
+    |   +-- shared_test_code  <--+ shared test code
+    |   +-- image_core    <--+ a module grouping 
+    |   +-- filters       <-- another module
+    |   +-- unit_tests    <--+ Library level unit tests
+    |   ...
+    |-- tests     <-- Integration tests
+    |-- benches   <-- Benchmarks
+    |-- examples  <-- examples
+    ... 
+{% endhighlight %}
+  </div>
+
+  <div style="order:0;" class="Rtable-cell">
+    <h3>Multi-crate (one crate per library)</h3>
+  </div>
+  <div style="order:1;" class="Rtable-cell">
+    <ul>
+      <li> The code/functionality is broken down, grouped and organised into individual
+        <code>crate</code>s of "sub-libraries"</li>
+      <li> Dependencies are handled using the <code>workspace</code> and <code>crate</code>
+        level <code>Cargo.toml</code> files. Sub-libraries can only access the <code>pub</code>
+        items of other sub-libraries.
+      </li>
+      <li> Unit tests are placed in a module (here in <code>unit_tests</code> folder) for each
+        library. Shared test code can exist in its own library.</li>
+    </ul>
+  </div>
+  <div style="order:2;" class="Rtable-cell">
+
+{% highlight console %}
+petective_project   <-- Project Root
+|-- Cargo.toml      <--+ Workspace toml file (required)
+|-- Cargo.lock
++-- shared_test_code  <--+ lib containing test code
+|   |-- Cargo.toml       | shared across libraries
 |   +-- src
-|   |   +-- lib.rs      <-- petective library's public interface
-|   |       |-- petective_apis.rs 
-|   |       +-- shared_test_code      <-- test code shared by all modules (e.g. fixtures)
-|   |       |   |-- mod.rs
-|   |       |   |-- ... snip ...
-|   |       +-- image_core            <-- in-memory image buffer representation module 
-|   |       |   |-- mod.rs
-|   |       |   |-- greyscale.rs
-|   |       |   |-- rgb.rs
-|   |       |   | ... snip ....
-|   |       |   +-- unit_tests        <-- all unit tests for the module.
-|   |       |       |-- mod.rs
-|   |       |       |-- image_core_common_test_code.rs
-|   |       |       |-- test_greyscale.rs
-|   |       |       |-- test_rgb.rs
-|   |       |       |-- ... snip ....
-|   |       +-- filters               <-- image filters (e.g. color conv, sharpen, edge detect)
-|   |       |   |-- mod.rs
-|   |       |   | ... snip ...
-|   |       | ... snip ...
-|   |       +-- bin         <--   (**Option 1 for apps:** all binaries/apps in same crate)
-|   |           +-- where-is-archie
-|   |           |   |-- main.rs
-|   |           |   |-- *.rs
-|   |           |   +-- unit_tests 
-|   |           |       +-- mod.rs    
-|   |           |       +-- test_*.rs
-|   |           +-- finding-nemo
-|   |           |   |-- main.rs
-|   |           | ... snip ...
-|   |    
+|       |-- lib.rs
+|       |-- *.rs
+| 
++-- petective    <-- Public interface
+|   |-- Cargo.toml
+|   +-- src
+|      |-- lib.rs 
+|      |-- *.rs 
+|      +-- unit_tests  
+|          |-- mod.rs
+|          |-- test_*.rs
+|          |-- *.rs
+|
++-- image_core     <--+ a 'sub-library' grouping 
+|   |-- Cargo.toml    | some functionality 
+|   +-- src
+|       |-- lib.rs
+|       |-- *.rs
+|       +-- unit_tests   <-- unit test for the library
+|           |-- mod.rs
+|           |-- test_*.rs
+|
++-- filters     <-- yet another library
+|   |-- Cargo.toml
+|   +-- src
+|       |-- lib.rs 
+|       |-- *.rs
+|       +-- unit_tests   <-- and its unit tests
+|           |-- mod.rs
+|           |-- test_*.rs
+|
+...
+{% endhighlight %}
+
+  </div>
+  <div style="order:3;" class="Rtable-cell">
+    <ul>
+      <li><b>For each library</b>, its benchmarks, integration tests and examples may and placed
+        in its own <code>benches</code>, <code>tests</code> and <code>examples</code> folders
+        respectively.</li>
+      <li>Alternatively, a separate <code>crate</code> may be used to hold these.</li>
+    </ul>
+  </div>
+  <div style="order:4;" class="Rtable-cell">
+{% highlight console %}
+petective_project   <-- Project Root
+|-- Cargo.toml      <--+ Workspace toml file (required)
+|-- Cargo.lock
++-- shared_test_code  <--+ lib containing test code 
++-- petective    <-- Public interface lib
+|   |-- Cargo.toml
+|   +-- src      <-- library source and unit test
+|   +-- tests    <-- integration tests
+|   +-- benches  <-- benchmark tests
+|   +-- examples <-- usage examples
+|
++-- image_core     <--+ a library  with only
+|   |-- Cargo.toml    |  benchmarks
+|   +-- src       <-- library source and unit test
+|   +-- benches   <-- integration tests
+|
++-- filters      <--+ a library with no integration
+|   |-- Cargo.toml  | or benchmark tests
+|   +-- src   <-- library source and unit test
+|
++-- integration    <--+ Alternatively tests and benches
+|   |-- Cargo.toml    | in separate crate
+|   +-- src   <-- a place holder library here
+|   +-- benches <--+ project-wide benchmarks and
+|   +-- tests      | integration tests
+...
+{% endhighlight %}
+  </div>
+</div>
+
+<div>
+<!--
+So how does it happen here:
+
+``` c
+|   |   +-- bin                 <--+ (**Option 1 for apps:**
+|   |   |   +-- where-is-archie    |  all binaries/apps in
+|   |   |   |   |-- main.rs        |  same crate)
+|   |   |   |   |-- *.rs
+|   |   |   |   +-- unit_tests 
+|   |   |   |       |-- mod.rs
+|   |   |   |       |-- test_*.rs
+|   |   |   +-- finding-nemo
+|   |   |       |-- main.rs
+|   |   |       |-- *.rs
+|   |   |       +-- unit_tests
+|   |   |           |-- mod.rs
+|   |   |           |-- test_*.rs
+|   |   |
+|   |   +-- unit_tests   <-- all unit tests for the lib.
+|   |       |-- mod.rs
+|   |       |-- test_*.rs
+|   |
 |   +-- benches      <-- benchmark tests
-|   |   |-- *.rs   
-|   |   | ... snip ...
-|   |    
+|   |   |-- *.rs
+|   |
 |   +-- tests        <-- integration tests
 |       |-- edge-detection-test.rs
 |       +-- pre-processing-integration-test
-|       |   |-- main.rs
-|       |   | ... snip ...
-|       | ... snip ...
-|       
-+-- petective_apps   <--   (**Option 2 for apps** all binaries in a separate crate)
-    |-- Cargo.toml
-    |-- Cargo.lock
+|           |-- main.rs
+|           |-- *.rs
+|
++-- petective_apps   <--+ (**Option 2 for apps**
+    |-- Cargo.toml      |  all binaries in a separate
+    |-- Cargo.lock      |  crate)
     +-- src   
-    |   +-- bin        
+    |   +-- bin
     |       +-- ace-ventura
     |       |   |-- main.rs
     |       |   |-- *.rs
@@ -284,53 +441,6 @@ petective_project   <-- Project Root
     |       |   |-- main.rs
     |       | ... snip ...
     | ... snip ...   
-        
-...
 ```
-
-## Multi-crate (one crate per library)
-
-```console
-petective
-+-- Cargo.toml    <-- Workspace toml file (workspace optional but recommend!!)
-+-- Cargo.lock 
-+-- petective     <-- Our monolith library + apps
-    +-- Cargo.toml
-    +-- src
-    |   +-- lib.rs    <-- petective library's public interface
-    |   |   +-- petective_apis.rs 
-    |   |   +-- common_test_code    <-- test code shared by all modules
-    |   |   |   +-- mod.rs
-    |   |   |   +-- ... snip ...
-    |   |   +-- image_core   <-- in-memory image buffer representation module 
-    |   |   |   +-- mod.rs
-    |   |   |   +-- greyscale.rs
-    |   |   |   +-- rgb.rs
-    |   |   |   +-- ... snip ....
-    |   |   |   +-- unit_tests    <-- all unit tests for the module.
-    |   |   |       +-- mod.rs
-    |   |   |       +-- image_core_common_test_code.rs
-    |   |   |       +-- test_greyscale.rs
-    |   |   |       +-- test_rgb.rs
-    |   |   |       +-- ... snip ....
-    |   |   +-- filters   <-- image filters (e.g. color conv, sharpen, edge detect)
-    |   |   |   +-- mod.rs
-    |   |   |   +-- ... snip ...
-    |   |   +-- ... snip ...
-    |   +-- benches
-    |   |   +-- *.rs    <-- benchmark tests
-    |   +-- tests      <-- integration tests
-    |   |   +-- main.rs
-    |   |   +-- pre-processing-test
-    |   |   |   +-- main.rs
-    |   |   |   +-- ... snip ...
-    |   |   +-- ... snip ...
-    |   +-- apps                <-- all binaries 
-    |   |   +-- where-is-archie
-    |   |       +-- main.rs
-    |   |       +-- *.rs
-    |   |       +-- unit_tests 
-    |   |           +-- mod.rs    
-    |   |           +-- test_*.rs
-
-```
+-->
+</div>
