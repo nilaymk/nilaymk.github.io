@@ -111,6 +111,10 @@ $baseurl: '{{ site.baseurl }}/images';
 
 		code {
 			text-transform: none;
+			font-weight: _font(weight-bold);
+			font-size: 110%;
+			padding: 0.0em 0.1em 0.0em 0.1em;
+			margin: 0 0;
 		}
 
 		a {
@@ -250,7 +254,7 @@ $baseurl: '{{ site.baseurl }}/images';
 		background: #e0e0e0;
 		border: 0px solid #e0e0e0;
 		margin: 0 0.25em;
-		padding: 0.0em 0.3em 0.0em 0.3em;
+		padding: 0.0em 0.2em 0.0em 0.2em;
 		border-radius: 3px	;
 		color: darkgreen;
 	}
@@ -259,7 +263,7 @@ $baseurl: '{{ site.baseurl }}/images';
 		-webkit-overflow-scrolling: touch;
 		font-family: _font(family-fixed);
 		font-size: _font(fixed-size);
-		margin: 0 0 _size(element-margin) 0;
+		margin: 0 0 0 0;
 
 		code {
 			border-radius: 6px;
@@ -1008,8 +1012,6 @@ $baseurl: '{{ site.baseurl }}/images';
 			margin-left: auto;
 			margin-right: auto;
 			
-
-
 			td {
 				padding-top: 0.5em;
 				padding-bottom: 0.5em;
@@ -1030,33 +1032,113 @@ $baseurl: '{{ site.baseurl }}/images';
 					padding-right: 0.5em;
 				}
 			}
+		}
 
+		&.scale-columns-as-rows {
+			@include breakpoint(medium) {
+			// // from https://css-tricks.com/responsive-data-tables/
+			// 	/* Force table to not be like tables anymore */
+			// 	table, thead, tbody, th, td, tr {
+			// 		display: block;
+			// 	}
+			// 	/* Hide table headers (but not display: none;, for accessibility) */
+			// 	thead tr {
+			// 		position: absolute;
+			// 		top: -9999px;
+			// 		left: -9999px;
+			// 	}
+			// 	//tr { border: 1px solid #ccc; }
+			// 	td {
+			// 		/* Behave  like a "row" */
+			// 		border: none;
+			// 		//border-bottom: 1px solid #eee;
+			// 		position: relative;
+			// 		padding-left: 50%;
+			// 	}
+				thead tr, {
+					position: absolute;
+					top: -9999px;
+					left: -9999px;
+				}
+				td, th {
+					display: block;
+					clear: both;
+				}
+				td[data-th]:before {
+					content: attr(data-th);
+					float: top;
+				}
+			}
 		}
 	}
 
-	:not(> .width-scaled) {
-		@include breakpoint(small) {
-		// from https://css-tricks.com/responsive-data-tables/
-			/* Force table to not be like tables anymore */
-			table, thead, tbody, th, td, tr {
-				display: block;
-			}
-			/* Hide table headers (but not display: none;, for accessibility) */
-			thead tr {
-				position: absolute;
-				top: -9999px;
-				left: -9999px;
-			}
-			//tr { border: 1px solid #ccc; }
-			td {
-				/* Behave  like a "row" */
-				border: none;
-				//border-bottom: 1px solid #eee;
-				position: relative;
-				padding-left: 50%;
+	/* Responsive tables */
+	.Rtable {
+		display: flex;
+		flex-wrap: wrap;
+		margin: 0 0 2em 0;
+		padding: 0;
+	}
+	.Rtable-cell {
+		box-sizing: border-box;
+		flex-grow: 1;
+		width: 100%;
+		padding: 0.3em 0.3em;
+		overflow: hidden;
+		list-style: none;
+		border: solid 2px _palette(border2);
+		// background: rgba(112, 128, 144, 0.2);
+		background-color: _palette(border-bg);
+	}
+	.Rtable-cell > h1,
+	.Rtable-cell > h2,
+	.Rtable-cell > h3,
+	.Rtable-cell > h4,
+	.Rtable-cell > h5,
+	.Rtable-cell > h6 {
+		margin: 0;
+	}
+
+	/* Table column sizing
+	================================== */
+	.Rtable--2cols > .Rtable-cell {
+		width: 50%;
+	}
+	.Rtable--3cols > .Rtable-cell {
+		width: 33.33%;
+	}
+	.Rtable--4cols > .Rtable-cell {
+		width: 25%;
+	}
+	.Rtable--5cols > .Rtable-cell {
+		width: 20%;
+	}
+	.Rtable--6cols > .Rtable-cell {
+		width: 16.6%;
+	}
+
+	/* Responsive
+	==================================== */
+	.Rtable--collapse {
+		@include breakpoint(medium) {
+			display: block;
+			
+			.Rtable-cell {
+				width: 100% !important;
 			}
 		}
 	}
+
+	.no-flexbox .Rtable {
+		display: block;
+	}
+	.no-flexbox .Rtable > .Rtable-cell {
+		width: 100%;
+	}
+	.no-flexbox .Rtable > .Rtable-cell--foot {
+		margin-bottom: 1em;
+	}
+
 
 /* Button */
 
